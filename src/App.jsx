@@ -6,7 +6,8 @@ import {useState} from "react";
 function App() {
     const [projectsState, setProjectsState] = useState({
         selectedProjectId: undefined,
-        projects: []
+        projects: [],
+
     });
 
     function handleStartAddProject() {
@@ -18,13 +19,16 @@ function App() {
         })
     }
     function handleAddProject(projectData){
+        const projectId = Math.random();
+
         setProjectsState(prevState => {
             const newProject = {
                 ...projectData,
-                id: Math.random(),
+                id: projectId,
             }
             return {
                 ...prevState,
+                selectedProjectId: projectId,
                 projects: [...prevState.projects, newProject]
             }
         })
@@ -39,7 +43,7 @@ function App() {
     }
     return (
         <main className="h-screen my-8 flex gap-8">
-            <ProjectSidebar onStartAddProject = {handleStartAddProject}></ProjectSidebar>
+            <ProjectSidebar projects={projectsState.projects} onStartAddProject = {handleStartAddProject}></ProjectSidebar>
             {content}        </main>
     );
 }
