@@ -20,6 +20,7 @@ export default function ProjectSidebar({onStartAddProject, projects, onSelectPro
                     return (<li key={project.id}>
                         <button onClick={()=>onSelectProject(project.id)}
                                 className={cssClasses}>{project.title}
+
                         </button>
                     </li>);
                 })
