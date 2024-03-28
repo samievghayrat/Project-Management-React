@@ -26,7 +26,6 @@ export default function NewProject({onAdd, onCancel}) {
             description: enteredDesc,
             dueDate: enteredDueDate,
         })
-
     }
 
     return <>
